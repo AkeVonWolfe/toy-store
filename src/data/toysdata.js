@@ -140,3 +140,5 @@ const vintageToys = [
       category: "Digital Pet"
     }
   ]
+
+  export default vintageToys
