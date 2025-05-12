@@ -1,27 +1,38 @@
-import { NavLink } from "react-router"
+import { Link, useLocation } from 'react-router-dom';
+import './Header.css';
 import logo from "../../assets/logo.png"
 import shopping_cart from "../../assets/shopping_cart.png"
+import Padlock_close from "../../assets/Padlock_close.png"
 
 const Header = () => {
+
+
+
+
     return (
-        <header>
+    <header className="header">
             <nav className="header-nav">
-                <NavLink>
-                    {/* <img src={logo} /> */}
-                </NavLink>
+                <Link to="/login" className="nav-item user-profile">
+                    <div className="profile-icon">
+                        <img src={Padlock_close} alt="User Profile" />
+                    </div>
+                </Link>
 
-                <NavLink>
-                    <img src={logo} />
-                </NavLink>
+                <Link to="/" className="nav-item logo">
+                    <div className="logo-container">
+                        <img src={logo} alt="Logo" />
+                    </div>
+                </Link>
 
-                <NavLink>
-                    <img src={shopping_cart} />
-                </NavLink>
-
-
+                <Link to="/cart" className={`nav-item cart }`}>
+                    <div className="cart-icon">
+                        <img src={shopping_cart} alt="Shopping Cart" />
+                        
+                    </div>
+                </Link>
             </nav>
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
