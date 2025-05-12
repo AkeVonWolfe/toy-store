@@ -9,12 +9,13 @@ async function getFirestoreData(setToyList) {
 
     setToyList(firebaseList)
 
+    console.log('firebaseList', firebaseList)
 
-
-    
 
 }
 
+
+// omvandlad funktion från send message firebare pratice
 const sendVintageToys = async () => {
     console.log('App sendVintageToys');
     try {
@@ -36,4 +37,5 @@ const sendVintageToys = async () => {
     }
 };
 
-export default sendVintageToys
+export { sendVintageToys, getFirestoreData }
+

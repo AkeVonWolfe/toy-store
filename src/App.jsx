@@ -1,13 +1,22 @@
-import { useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import sendVintageToys from './data/crud'
+import { getFirestoreData, sendVintageToys } from './data/crud.js'
 import Header from './components/header/Header.jsx'
+import { useMenuStore } from './data/store.js'
+
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const setToyList = useMenuStore(state => state.setToyList)
     // sendVintageToys();   function to send data to firebase
+    
+    useEffect(() => {
+    getFirestoreData(setToyList);
+  }, [setToyList]);
+
  
 
   return (
