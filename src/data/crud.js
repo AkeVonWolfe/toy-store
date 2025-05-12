@@ -21,9 +21,9 @@ const sendVintageToys = async () => {
         const firebaseCollection = collection(db, 'Toys'); // Referera till "Toys"-collectionen
 
         // Lägg till varje objekt i vintageToys-arrayen som ett nytt dokument i "Toys"-collectionen
-        const addedToys = await Promise.all(
-            vintageToys.map(async (toy) => {
-                const toyRef = await addDoc(firebaseCollection, toy);
+        const addedToys = await Promise.all( // Använd Promise.all för att vänta på alla asynkrona operationer
+            vintageToys.map(async (toy) => { // Iterera över varje leksak i vintageToys-arrayen
+                const toyRef = await addDoc(firebaseCollection, toy); // Lägg till leksaken i Firestore
                 console.log('Leksak tillagd med ID: ', toyRef.id);
                 return toyRef;
             })
