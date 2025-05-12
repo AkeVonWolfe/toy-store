@@ -1,0 +1,130 @@
+.admin {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.toy-menu-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.toy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    color: black;
+}
+
+.toy-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+}
+
+.toy-image-container {
+  width: 100%;
+  padding: 15px;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.toy-image {
+  height: 160px;
+  object-fit: contain;
+}
+
+.toy-header {
+  padding: 10px 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toy-name {
+  font-family: 'Cursive', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.toy-era {
+  font-family: 'Cursive', serif;
+  font-style: italic;
+  margin: 0;
+}
+
+.toy-description {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.add-to-cart-btn {
+  background-color: #6c3ce9;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin: 10px auto;
+  width: 120px;
+  display: block;
+}
+
+.edit-button,
+.save-button,
+.delete-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #6366f1;
+  color: white;
+}
+
+.save-button {
+  background-color: #22c55e;
+  color: white;
+  margin-right: 8px;
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: white;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-input,
+.edit-textarea {
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}

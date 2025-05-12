@@ -6,9 +6,6 @@ import Padlock_close from "../../assets/Padlock_close.png"
 
 const Header = () => {
 
-
-
-
     return (
     <header className="header">
             <nav className="header-nav">

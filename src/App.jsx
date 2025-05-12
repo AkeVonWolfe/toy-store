@@ -17,7 +17,7 @@ function App() {
     <div className="app">
       <Header />
       <main className="main-content">
-        <Outlet />
+        <Outlet /> 
       </main>
     </div>
   )
