@@ -5,6 +5,7 @@ import './App.css'
 import { getFirestoreData, sendVintageToys } from './data/crud.js'
 import Header from './components/header/Header.jsx'
 import { useMenuStore } from './data/store.js'
+import Homepage from './components/Home/Homepage.jsx'
 
 
 
@@ -20,7 +21,11 @@ function App() {
  
 
   return (
-    <Header> </Header>
+    <>
+    <Header />
+    <Homepage />
+    
+    </>
   )
 }
 
