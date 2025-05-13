@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header/>
       <main className="main-content">
         <Outlet /> 
       </main>
