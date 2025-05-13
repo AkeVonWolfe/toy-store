@@ -24,7 +24,7 @@ export const deleteToy = async (toyId) => {
     }
 }
 // Funktion för att uppdatera en leksak i Firestore
-const updateToy = async (toyId, editaedToy) =>{
+export const updateToy = async (toyId, editaedToy) =>{
     try {
         const toyRef = doc(db, 'Toys', toyId) // Referera till den specifika leksaken i Firestore
         await updateDoc(toyRef, editaedToy)

@@ -9,9 +9,11 @@ function App() {
   const setToyList = useMenuStore(state => state.setToyList)
   // sendVintageToys();   function to send data to firebase
   
+
+  // behöver inte skicka data till firebase varje gång appen laddas
   useEffect(() => {
     getFirestoreData(setToyList);
-  }, [setToyList]);
+  }, []); // tom array körs bara en gång så att jag inte läser 1.3k 
 
   return (
     <div className="app">

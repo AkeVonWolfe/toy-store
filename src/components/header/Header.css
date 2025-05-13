@@ -74,33 +74,3 @@
 .toy-blocks {
   display: flex;
 }
-
-.block {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #000;
-  margin: 0 2px;
-  border: 2px solid #000;
-  border-radius: 4px;
-}
-
-.block.blue {
-  background-color: #4299e1;
-}
-
-.block.red {
-  background-color: #f56565;
-}
-
-.block.yellow {
-  background-color: #ecc94b;
-}
-
-.block.green {
-  background-color: #48bb78;
-}

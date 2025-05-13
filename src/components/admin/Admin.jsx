@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMenuStore } from '../../data/store';
 import './Admin.css';
-import { deleteToy} from '../../data/crud.js'
+import { deleteToy, updateToy } from '../../data/crud.js'
 
 function Admin() {
 
@@ -18,15 +18,16 @@ function Admin() {
     setEditedToy({ ...toy })
   }
     // funktion för att spara ändringar
-  const handleSave = () => {
+  const handleSave = async () => {
     const updatedList = storeToysList.map(toy =>
       toy.id === editedToy.id ? editedToy : toy
     )
+    await updateToy(editedToy.id, editedToy) // funktion för update från firebase
     setToyList(updatedList)
     setEditingToyId(null)
   }
    // Function to handle the delete button click
-  const handleDelete  = async (id) => {
+  const handleDelete  = async (id) => { // behövde göra om till async
     await deleteToy(id) // funktion för delete från firebase
     const updatedList = storeToysList.filter(toy => toy.id !== id)
     setToyList(updatedList)
