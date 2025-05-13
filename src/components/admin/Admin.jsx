@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useMenuStore } from '../../data/store';
 import './Admin.css';
+import { deleteToy} from '../../data/crud.js'
 
 function Admin() {
 
@@ -9,6 +10,8 @@ function Admin() {
   const [editingToyId, setEditingToyId] = useState(null)
   const [editedToy, setEditedToy] = useState({})
  
+// ta davids edits och remove from message example 
+
   // funktion för att editera en leksak
   const handleEditClick = (toy) => {
     setEditingToyId(toy.id)
@@ -23,7 +26,8 @@ function Admin() {
     setEditingToyId(null)
   }
    // Function to handle the delete button click
-  const handleDelete = (id) => {
+  const handleDelete  = async (id) => {
+    await deleteToy(id) // funktion för delete från firebase
     const updatedList = storeToysList.filter(toy => toy.id !== id)
     setToyList(updatedList)
     setEditingToyId(null)

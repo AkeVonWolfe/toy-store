@@ -13,7 +13,26 @@ async function getFirestoreData(setToyList) {
 
 
 }
-
+// Funktion för att ta bort en leksak från Firestore
+export const deleteToy = async (toyId) => {
+    try {
+        const toyRef = doc (db, 'Toys', toyId) // Referera till den specifika leksaken i Firestore
+        await deleteDoc(toyRef) // ta bort leksaken
+    }
+    catch (error) {
+        console.error('Fel vid borttagning av leksak: ', error) 
+    }
+}
+// Funktion för att uppdatera en leksak i Firestore
+const updateToy = async (toyId, editaedToy) =>{
+    try {
+        const toyRef = doc(db, 'Toys', toyId) // Referera till den specifika leksaken i Firestore
+        await updateDoc(toyRef, editaedToy)
+    }
+    catch (error) {
+        console.error('Fel vid uppdatering av leksak: ', error) 
+    }
+}
 
 // omvandlad funktion från send message firebare pratice
 const sendVintageToys = async () => {
