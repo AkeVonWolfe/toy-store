@@ -5,9 +5,16 @@ import './Homepage.css';
 const Homepage = () => {
 
     const toysList = useMenuStore(state => state.storeToysList) // tar ut toyList från store
+    const addToCart = useMenuStore(state => state.addToCart) // tar ut addToCart från store
 
-    const handleAddToCart = (toyId) => { // funktion för att lägga till leksak i varukorg
+    const handleAddToCart = (toyId) => { 
+
+      addToCart(toyId)
+
         console.log ('Added toy with id ', toyId, 'to cart') // loggar till konsolen ifall en leksak har lagts till i varukorgen
+
+        // need to add functiion so it copies cartitems when adding new item
+        console.log ('Current cart items: ' , addToCart.length)
     }
 
     return (

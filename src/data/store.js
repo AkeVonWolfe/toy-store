@@ -5,6 +5,9 @@ export const useMenuStore = create((set) => ({
     storeToysList: [],
     cartItems: [],
 
-    setToyList: (firebaseList) => set(() => ({ storeToysList: firebaseList }))
+    setToyList: (firebaseList) => set(() => ({ storeToysList: firebaseList })),
+    addToCart: (toyId) => set((state) => ({ cartItems: [...state.cartItems, toyId] })),
 }));
+
+
 
