@@ -38,7 +38,7 @@ const Homepage = () => {
                 <h2 className="toy-name">{toy.name}</h2>
                 <p className="toy-era">From: {toy.era}</p>
               </div>
-              
+              <p className="toy-price">Price: {toy.price} kr</p>
               <p className="toy-description">{toy.description}</p>
               
               <button 

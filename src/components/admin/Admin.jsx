@@ -67,6 +67,7 @@ function Admin() {
             <>
               <h2 className="toy-title">{toy.name}</h2>
               <p className="toy-from">From: {toy.from}</p>
+              <p className="toy-price">Price: {toy.price} kr</p>
               <p className="toy-description">{toy.description}</p>
               <button onClick={() => handleEditClick(toy)} className="edit-button">Edit Item</button>
             </>
