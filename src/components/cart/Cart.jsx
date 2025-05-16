@@ -22,15 +22,15 @@ function Cart() {
         security: ''
     })
 
-    // Find the toy objects that correspond to the IDs in the cart
+    // tar toyobject med hjälp av id
     const getCartProducts = () => {
-        // Count occurrences of each toy ID
+        // ränkar varje id 
         const countMap = {};
         cartItems.forEach(id => {
             countMap[id] = (countMap[id] || 0) + 1;
         })
         
-        // Create array with toy details and quantities
+        // skapar en array med unika leksaks-id:n
         const uniqueItems = [...new Set(cartItems)]
         return uniqueItems.map(id => {
             const toy = toysList.find(toy => toy.id === id);
@@ -38,30 +38,30 @@ function Cart() {
                 ...toy,
                 quantity: countMap[id]
             };
-        }).filter(item => item); // Remove any undefined items
+        }).filter(item => item); // ta bort undefined items
     }
     
     const cartProducts = getCartProducts();
     
-    // Calculate total price
+    // kaluklerar totalpriset
     const calculateTotal = () => {
         return cartProducts.reduce((total, item) => {
             return total + (item.price * item.quantity);
         }, 0)
     }
     
-    // Handle quantity changes
+    // lägger till en leksak i varukorgen
     const increaseQuantity = (toyId) => {
         const addToCart = useMenuStore.getState().addToCart;
         addToCart(toyId);
     }
     
     const decreaseQuantity = (toyId) => {
-        // Implementation would require adding removeFromCart to the store
+        // behlver en funktion för att ta bort en leksak från varukorgen
         console.log("Decrease quantity for", toyId);
     }
     
-    // Handle form input changes
+    // ändrigar i inputfält
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormData({
@@ -70,7 +70,7 @@ function Cart() {
         })
     }
     
-    // Handle form submission
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Processing purchase:", formData);

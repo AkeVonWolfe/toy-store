@@ -9,7 +9,7 @@ const Header = () => {
     return (
     <header className="header">
             <nav className="header-nav">
-                <Link to="/login" className="nav-item user-profile">
+                <Link to="/admin" className="nav-item user-profile">
                     <div className="profile-icon">
                         <img src={Padlock_close} alt="User Profile" />
                     </div>

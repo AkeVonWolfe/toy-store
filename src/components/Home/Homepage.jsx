@@ -1,10 +1,11 @@
 import React from 'react';
 import { useMenuStore } from '../../data/store';
 import './Homepage.css'; 
+import SearchBar from '../search/Search'
 
 const Homepage = () => {
 
-    const toysList = useMenuStore(state => state.storeToysList) // tar ut toyList från store
+    const toysList = useMenuStore(state => state.filteredToysList) // tar ut filteredToysList från store
     const addToCart = useMenuStore(state => state.addToCart) // tar ut addToCart från store
 
     const handleAddToCart = (toyId) => { 
@@ -19,6 +20,7 @@ const Homepage = () => {
 
     return (
     <div className="toy-menu-container">
+      <SearchBar />
       <div className="toy-grid">
         {toysList && toysList.length > 0 ? ( // kollar ifall toylist inte är tom
           toysList.map((toy) => ( 

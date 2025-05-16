@@ -4,16 +4,25 @@ import { create } from 'zustand';
 export const useMenuStore = create((set) => ({
     storeToysList: [],
     cartItems: [],
+    filteredList: [],
 
-    setToyList: (firebaseList) => set(() => ({ storeToysList: firebaseList })),
+    setToyList: (firebaseList) => set(() => ({ 
+        storeToysList: firebaseList,
+        filteredToysList: firebaseList // startar med att sätta filteredToysList till samma som storeToysList
+    })),
+
+    // Set filtered toys based on search
+    setFilteredToys: (filteredList) => set(() => ({ 
+        filteredToysList: filteredList 
+    })),
 
 
-     // Add item to cart
+     // lägg till en leksak i varukorgen
     addToCart: (toyId) => set((state) => ({ 
         cartItems: [...state.cartItems, toyId] 
     })),
     
-    // Remove item from cart
+    // ta bort en leksak från varukorgen
     removeFromCart: (toyId) => set((state) => {
         const index = state.cartItems.indexOf(toyId);
         if (index === -1) return state; // Item not found
@@ -23,7 +32,7 @@ export const useMenuStore = create((set) => ({
         return { cartItems: newCartItems };
     }),
     
-    // Clear the entire cart
+    // rensa varukorgen
     clearCart: () => set(() => ({ cartItems: [] })),
 }));
 
