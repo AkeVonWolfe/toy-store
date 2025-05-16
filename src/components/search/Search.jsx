@@ -18,9 +18,9 @@ const SearchBar = () => {
         else {
             // filtera toys baserat på name, era och description
             const filteredToys = toyList.filter(toy =>
-                toy.name.toLowerCase().includes(query) ||
-                (toy.era && toy.era.toLowerCase().includes(query)) || 
-                (toy.description && toy.description.toLowerCase().includes(query))  
+                toy.name?.toLowerCase().includes(query) ||
+                toy.era?.toLowerCase().includes(query) ||
+                toy.description?.toLowerCase().includes(query)
             )
             setFilteredToys(filteredToys)
         }
