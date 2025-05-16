@@ -28,7 +28,7 @@ const Homepage = () => {
               <div className="toy-image-container">
                 <img 
                  //  src={toy.imageUrl || '/placeholder-toy.jpg'} // sätter en placeholder ifall ingen bild finns
-                  alt={toy.name} 
+                  // alt={toy.name} 
                   className="toy-image"
                   
                 />
@@ -51,7 +51,7 @@ const Homepage = () => {
           ))
         ) : (
           <div className="no-toys-message">
-            <p>No toys available at the moment.</p>
+            <p>No toys found.</p>
           </div>
         )}
       </div>

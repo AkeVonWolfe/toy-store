@@ -38,7 +38,7 @@ function Admin() {
     <div className="toy-grid">
       {storeToysList.map(toy => (
         <div key={toy.id} className="toy-card">
-          <img src={toy.image} alt={toy.name} className="toy-image" />
+          <img src={toy.image} className="toy-image" />
 
           {editingToyId === toy.id ? (
             <div className="edit-form">
@@ -49,8 +49,13 @@ function Admin() {
               />
               <input
                 className="edit-input"
-                value={editedToy.from}
-                onChange={event => setEditedToy({ ...editedToy, from: event.target.value })}
+                value={editedToy.era}
+                onChange={event => setEditedToy({ ...editedToy, era: event.target.value })}
+              />
+              <input
+                className="edit-input"
+                value={editedToy.price}
+                onChange={event => setEditedToy({ ...editedToy, price: event.target.value })}
               />
               <textarea
                 className="edit-textarea"  
@@ -66,7 +71,7 @@ function Admin() {
           ) : (
             <>
               <h2 className="toy-title">{toy.name}</h2>
-              <p className="toy-from">From: {toy.from}</p>
+              <p className="toy-era">From: {toy.era}</p>
               <p className="toy-price">Price: {toy.price} kr</p>
               <p className="toy-description">{toy.description}</p>
               <button onClick={() => handleEditClick(toy)} className="edit-button">Edit Item</button>
