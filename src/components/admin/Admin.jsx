@@ -198,6 +198,11 @@ function Admin() {
               />
               <input
                 className="edit-input"
+                value={editedToy.imgLink}
+                onChange={event => setEditedToy({ ...editedToy, imgLink: event.target.value })}
+              />
+              <input
+                className="edit-input"
                 value={editedToy.price}
                 onChange={event => setEditedToy({ ...editedToy, price: event.target.value })}
               />
