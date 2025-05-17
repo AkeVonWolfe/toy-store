@@ -2,6 +2,8 @@ import { collection, doc, getDocs, addDoc, deleteDoc, updateDoc } from "firebase
 import { db } from "./firestore.js";
 import vintageToys from "./toysdata.js"
 
+
+// hämta data från firebase
 async function getFirestoreData(setToyList) {
     const firebaseColletion = collection(db, 'Toys')
     const firebaseSnapshot = await getDocs(firebaseColletion)
@@ -34,7 +36,20 @@ export const updateToy = async (toyId, editaedToy) =>{
     }
 }
 
-// omvandlad funktion från send message firebare pratice
+// Funktion för att lägga till en ny leksak i Firestore
+export const addToy = async (newToy) => {
+    try {
+        const toysCollection = collection(db, 'Toys');
+        const newToyRef = await addDoc(toysCollection, newToy);
+        console.log('Leksak tillagd med ID:', newToyRef.id);
+        return { id: newToyRef.id, ...newToy }; // Returnera den nya leksaken med ID
+    } catch (error) {
+        console.error('Fel vid tillägg av ny leksak:', error);
+        throw error;
+    }
+}
+
+// omvandlad funktion från send message firebare pratice för att skicka mass data till firebase
 const sendVintageToys = async () => {
     console.log('App sendVintageToys');
     try {
