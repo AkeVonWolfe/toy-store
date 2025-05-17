@@ -19,7 +19,7 @@ function Admin() {
     category: '',
     price: '',
     era: '',
-    image: 'https://placehold.co/300x200' // Placeholder image URL
+    imgLink: '' 
   })
  
   // funktion för att editera en leksak
@@ -76,14 +76,13 @@ function Admin() {
         category: '',
         price: '',
         era: '',
-        image: 'https://placehold.co/300x200'
+        imgLink: ''
       })
       
       // Dölj formuläret
       setShowAddForm(false)
     } catch (error) {
       console.error('Fel vid tillägg av ny leksak:', error)
-      alert('Något gick fel vid tillägg av ny leksak')
     }
   }
 
@@ -95,14 +94,14 @@ function Admin() {
           className="add-toy-button" 
           onClick={() => setShowAddForm(!showAddForm)}
         >
-          {showAddForm ? 'Avbryt' : 'Lägg till ny leksak'}
+          {showAddForm ? 'Cancel' : 'Add New Toy'}
         </button>
       </div>
 
       {}
       {showAddForm && (
         <div className="add-toy-form">
-          <h2>Lägg till ny leksak</h2>
+          <h2>Add new Toy</h2>
           <form onSubmit={handleAddToy}>
             <div className="form-group">
               <label htmlFor="name">Namn*:</label>
@@ -117,7 +116,7 @@ function Admin() {
             </div>
             
             <div className="form-group">
-              <label htmlFor="description">Beskrivning:</label>
+              <label htmlFor="description">Description:</label>
               <textarea
                 id="description"
                 name="description"
@@ -128,7 +127,7 @@ function Admin() {
             </div>
             
             <div className="form-group">
-              <label htmlFor="category">Kategori:</label>
+              <label htmlFor="category">Category:</label>
               <input
                 type="text"
                 id="category"
@@ -139,7 +138,7 @@ function Admin() {
             </div>
             
             <div className="form-group">
-              <label htmlFor="price">Pris (kr)*:</label>
+              <label htmlFor="price">SEK:</label>
               <input
                 type="text"
                 id="price"
@@ -163,15 +162,14 @@ function Admin() {
             </div>
             
             <div className="form-group">
-              <label htmlFor="image">Bild URL:</label>
+              <label htmlFor="imgLink">Image URL:</label>
               <input
                 type="text"
-                id="image"
-                name="image"
-                value={newToy.image}
+                id="imgLink"
+                name="imgLink"
+                value={newToy.imgLink}
                 onChange={handleNewToyChange}
-                placeholder="https://placehold.co/300x200"
-              />
+  />
             </div>
             
             <button type="submit" className="save-button">Lägg till</button>
@@ -182,7 +180,7 @@ function Admin() {
     <div className="toy-grid">
       {storeToysList.map(toy => (
         <div key={toy.id} className="toy-card">
-          <img src={toy.image} className="toy-image" />
+          <img src={toy.imgLink} className="toy-image" />
 
           {editingToyId === toy.id ? (
             <div className="edit-form">

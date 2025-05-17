@@ -27,7 +27,7 @@ const Homepage = () => {
             <div key={toy.id} className="toy-card">
               <div className="toy-image-container">
                 <img 
-                 //  src={toy.imageUrl || '/placeholder-toy.jpg'} // sätter en placeholder ifall ingen bild finns
+                   src={toy.imgLink || '/placeholder-toy.jpg'} // sätter en placeholder ifall ingen bild finns
                   // alt={toy.name} 
                   className="toy-image"
                   
