@@ -57,8 +57,8 @@ function Cart() {
     }
     
     const decreaseQuantity = (toyId) => {
-        // behlver en funktion för att ta bort en leksak från varukorgen
-        console.log("Decrease quantity for", toyId);
+        const removeFromCart = useMenuStore.getState().removeFromCart;
+        removeFromCart(toyId);
     }
     
     // ändrigar i inputfält
@@ -188,11 +188,11 @@ function Cart() {
                             {cartProducts.map((item) => (
                                 <div key={item.id} className="cart-item">
                                     <div className="item-image">
-                                        <img src={item.imageUrl || '/placeholder-toy.jpg'} alt={item.name} />
+                                        <img src={item.imgLink || '/placeholder-toy.jpg'} alt={item.name} />
                                     </div>
                                     <div className="item-details">
                                         <div className="item-name">{item.name}</div>
-                                        <div className="item-price">Price {item.price}</div>
+                                        <div className="item-price"> {item.price} SEK</div>
                                     </div>
                                     <div className="quantity-controls">
                                         <button 
@@ -214,7 +214,7 @@ function Cart() {
                             
                             <div className="cart-total">
                                 <span className="total-label">Total Price</span>
-                                <span className="total-amount">{calculateTotal()}</span>
+                                <span className="total-amount">{calculateTotal()} SEK</span>
                             </div>
                         </>
                     ) : (
