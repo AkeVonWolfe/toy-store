@@ -55,8 +55,10 @@
 
 .vintage-toy-era {
   font-size: 0.875rem;
-  color: #666;
+  color: #000000;
   margin-top: 0.25rem;
+  font-weight: bold;
+  padding-top: 0.3rem;
 }
 
 .vintage-toy-price {

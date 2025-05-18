@@ -34,6 +34,7 @@ const Homepage = () => {
                   {/* <p className="vintage-toy-era">From: {toy.era}</p> */}
                 </div>
                 <p className="vintage-toy-price">Price: {toy.price} kr</p>
+                <p className="vintage-toy-era">Era: {toy.era}</p>
                 <p className="vintage-toy-description">{toy.description}</p>
                 
                 <button 
