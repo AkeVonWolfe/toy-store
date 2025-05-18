@@ -20,7 +20,7 @@ const Homepage = () => {
 
     return (
     <div className="toy-menu-container">
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className="toy-grid">
         {toysList && toysList.length > 0 ? ( // kollar ifall toylist inte är tom
           toysList.map((toy) => ( 
