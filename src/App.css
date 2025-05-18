@@ -1,4 +1,25 @@
 #root {
-  background-color:  #bee3f8;
+  background-color: #bee3f8;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #bee3f8;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
