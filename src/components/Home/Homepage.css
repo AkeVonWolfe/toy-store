@@ -1,14 +1,19 @@
-
-.toy-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-  padding-left: 1.2rem;
+.vintage-toy-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+.vintage-toy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  max-width: 1200px;
+}
 
-.toy-card {
+.vintage-toy-card {
   border-radius: 0.75rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
   padding: 1.5rem 1rem;
@@ -17,13 +22,14 @@
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.2s ease;
+  background-color: white;
 }
 
-.toy-card:hover {
+.vintage-toy-card:hover {
   transform: translateY(-0.25rem);
 }
 
-.toy-image-container {
+.vintage-toy-image-wrapper {
   margin-bottom: 1rem;
   height: 10rem;
   display: flex;
@@ -31,42 +37,41 @@
   justify-content: center;
 }
 
-.toy-image {
+.vintage-toy-image {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
 }
 
-.toy-header {
+.vintage-toy-info-header {
   margin-bottom: 0.5rem;
 }
 
-.toy-name {
+.vintage-toy-name {
   font-size: 1.25rem;
   font-weight: 700;
   margin: 0;
 }
 
-.toy-era {
+.vintage-toy-era {
   font-size: 0.875rem;
   color: #666;
   margin-top: 0.25rem;
 }
 
-.toy-price {
+.vintage-toy-price {
   font-weight: 600;
   font-size: 1rem;
   margin: 0.5rem 0;
 }
 
-.toy-description {
+.vintage-toy-description {
   font-size: 0.875rem;
   color: #444;
   margin-bottom: 1rem;
 }
 
-
-.add-to-cart-btn {
+.vintage-toy-add-button {
   background-color: #1e293b; 
   color: white;
   border: none;
@@ -78,11 +83,11 @@
   transition: background-color 0.2s ease;
 }
 
-.add-to-cart-btn:hover {
+.vintage-toy-add-button:hover {
   background-color: #0f172a;
 }
 
-.no-toys-message {
+.vintage-toy-empty-message {
   grid-column: 1 / -1;
   text-align: center;
   font-size: 1.125rem;
