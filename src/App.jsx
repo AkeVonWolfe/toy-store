@@ -3,7 +3,9 @@ import { Outlet } from 'react-router-dom'
 import './App.css'
 import { getFirestoreData, sendVintageToys } from './data/crud.js'
 import Header from './components/header/Header.jsx'
+import Footer from './components/footer/footer.jsx'
 import { useMenuStore } from './data/store.js'
+
 
 function App() {
   const setToyList = useMenuStore(state => state.setToyList)
@@ -21,6 +23,7 @@ function App() {
       <main className="main-content">
         <Outlet /> 
       </main>
+      <Footer/>
     </div>
   )
 }
