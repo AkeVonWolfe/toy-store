@@ -26,15 +26,31 @@ export const deleteToy = async (toyId) => {
     }
 }
 // Funktion för att uppdatera en leksak i Firestore
-export const updateToy = async (toyId, editaedToy) =>{
+export const updateToy = async (toyId, editedToy) => {
+    if (!toyId) {
+        console.error('Error: Missing toy ID for update operation');
+        throw new Error('Missing toy ID');
+    }
+    
     try {
-        const toyRef = doc(db, 'Toys', toyId) // Referera till den specifika leksaken i Firestore
-        await updateDoc(toyRef, editaedToy)
+        console.log(`Updating toy with ID: ${toyId}`);
+        console.log('Update data:', editedToy);
+        
+        // kollar att priset är ett nummer
+        const cleanedToy = {
+            ...editedToy,
+            price: Number(editedToy.price)
+        };
+        
+        const toyRef = doc(db, 'Toys', toyId);
+        await updateDoc(toyRef, cleanedToy);
+        console.log('Update successful');
+        return true;
+    } catch (error) {
+        console.error('Error updating toy:', error);
+        throw error; //
     }
-    catch (error) {
-        console.error('Fel vid uppdatering av leksak: ', error) 
-    }
-}
+};
 
 // Funktion för att lägga till en ny leksak i Firestore
 export const addToy = async (newToy) => {

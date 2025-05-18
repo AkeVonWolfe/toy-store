@@ -80,7 +80,7 @@ function Cart() {
     return (
         <div className="cart-container">
             <div className="cart-content">
-                <div className="checkout-form">
+                {/* <div className="checkout-form">
                     <div className="payment-methods">
                         <div className="payment-option">
                             <img src={mastercard.png} alt="Mastercard" className="payment-logo" />
@@ -180,7 +180,7 @@ function Cart() {
                         
                         <button type="submit" className="purchase-btn">Purchase</button>
                     </form>
-                </div>
+                </div> */}
                 
                 <div className="cart-items">
                     {cartProducts.length > 0 ? (
