@@ -225,6 +225,7 @@
   border-radius: 0.5rem;
   outline: none;
   resize: none;
+  margin-bottom: 0;
 }
 
 .form-group input:focus,
@@ -235,6 +236,15 @@
 .error-text {
   color: #dc2626;
   font-size: 0.875rem;
+  margin-top: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+.error-text.visible {
+  max-height: 3rem; 
+  opacity: 1;
   margin-top: 0.5rem;
 }
 

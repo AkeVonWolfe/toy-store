@@ -23,11 +23,11 @@ function Admin() {
     imgLink: '' 
   })
   
-  // State for validation errors och touched fields
+  // State för felmeddelanden och touched fält
   const [errors, setErrors] = useState({})
   const [touched, setTouched] = useState({})
 
-  // Clear success message after 3 seconds
+  // rensar success meddelande efter 3 sekunder
   useEffect(() => {
     let timer;
     if (saveSuccess) {
@@ -150,11 +150,11 @@ function Admin() {
       setSaveSuccess(false)
       console.log("Starting save operation for toy:", editedToy)
       
-      // Explicitly convert price to number
+      // ser till att priset är ett nummer
       let parsedPrice = 0
       try {
         parsedPrice = Number(editedToy.price)
-        // Check if the conversion resulted in a valid number
+        // kollar om priset är ett nummer
         if (isNaN(parsedPrice)) {
           setErrors(prev => ({ ...prev, price: "Price must be a valid number" }))
           setTouched(prev => ({ ...prev, price: true }))
@@ -170,7 +170,7 @@ function Admin() {
         return
       }
       
-      // Create a clean object for validation and saving
+      // skapa ett object för validation och sparande
       const toyToSave = {
         name: editedToy.name?.trim() || "",
         description: editedToy.description?.trim() || "",
@@ -182,7 +182,7 @@ function Admin() {
       
       console.log("Prepared toy for validation:", toyToSave)
       
-      // Mark all fields as touched to show any validation errors
+      // markera alla fält som touched för att visa felmeddelanden
       const allTouched = {
         name: true,
         description: true,
@@ -193,21 +193,21 @@ function Admin() {
       }
       setTouched(allTouched)
       
-      // Validate before saving
+      // Validate innan sparning
       if (!validateForm(toyToSave)) {
         console.error("Validation failed with errors:", errors)
         setIsSubmitting(false)
-        return // Don't proceed if validation fails
+        return // forsätter inte om valideringen misslyckas
       }
       
       console.log("Validation passed, updating toy with ID:", editedToy.id)
       console.log("Data being sent to Firebase:", toyToSave)
       
-      // Update in Firebase
+      // Update i Firebase
       await updateToy(editedToy.id, toyToSave)
       console.log("Firebase update successful")
       
-      // Update local state with the properly formatted data
+      // updatera local state med den redigerade leksaken
       const updatedToy = { ...toyToSave, id: editedToy.id }
       
       const updatedList = storeToysList.map(toy =>
@@ -218,7 +218,7 @@ function Admin() {
       setToyList(updatedList)
       setEditingToyId(null)
       
-      // Reset states after successful save
+      // nollställ states efter sparande
       setTouched({})
       setErrors({})
       setSaveSuccess(true)
@@ -268,7 +268,7 @@ function Admin() {
     // makra fältet som "touched" för att visa felmeddelanden
     setTouched(prev => ({ ...prev, [name]: true }))
     
-    // valdera fältet - ensure price is validated as a number
+    // valdera fältet - ser till att priset valideras som ett nummer
     if (name === 'price') {
       try {
         const numberValue = value ? Number(value) : 0
@@ -285,10 +285,10 @@ function Admin() {
   const handleEditChange = (field, value) => {
     setEditedToy({ ...editedToy, [field]: value })
     
-    // Mark field as touched
+    // Markerar field är touched
     setTouched(prev => ({ ...prev, [field]: true }))
     
-    // Validate field - ensure price is validated as a number
+    // Validate field - ser till att priset valideras som ett nummer
     if (field === 'price') {
       try {
         const numberValue = value ? Number(value) : 0
@@ -308,7 +308,8 @@ function Admin() {
     try {
       setIsSubmitting(true)
       
-      // Parse price to number
+    
+      // ser till att priset är ett nummer
       let parsedPrice = 0
       try {
         parsedPrice = Number(newToy.price)
@@ -326,7 +327,7 @@ function Admin() {
         return
       }
       
-      // Create clean object for validation and saving
+      // skapar ett object för validation och sparande
       const toyToSave = {
         name: newToy.name?.trim() || "",
         description: newToy.description?.trim() || "",
@@ -414,6 +415,11 @@ function Admin() {
     setTouched(prev => ({ ...prev, [field]: true }))
   }
 
+  // hjälper till att avgöra om felmeddelandet ska visas
+  const shouldShowError = (field) => {
+    return touched[field] && errors[field];
+  }
+
   return (
     <div className="admin-container">
       <div className="admin-header">
@@ -435,9 +441,9 @@ function Admin() {
               onBlur={() => handleBlur('name')}
               required
             />
-            {touched.name && errors.name && (
-              <p className="error-text">{errors.name}</p>
-            )}
+            <p className={`error-text ${shouldShowError('name') ? 'visible' : ''}`}>
+              {errors.name || 'Toy name must be at least 2 characters long'}
+            </p>
           </div>
           
           <div className="form-group">
@@ -451,9 +457,9 @@ function Admin() {
               rows="3"
               required
             />
-            {touched.description && errors.description && (
-              <p className="error-text">{errors.description}</p>
-            )}
+            <p className={`error-text ${shouldShowError('description') ? 'visible' : ''}`}>
+              {errors.description || 'Description must be at least 2 characters long'}
+            </p>
           </div>
           
           <div className="form-group">
@@ -467,9 +473,9 @@ function Admin() {
               onBlur={() => handleBlur('category')}
               required
             />
-            {touched.category && errors.category && (
-              <p className="error-text">{errors.category}</p>
-            )}
+            <p className={`error-text ${shouldShowError('category') ? 'visible' : ''}`}>
+              {errors.category || 'Category must be at least 2 characters long'}
+            </p>
           </div>
           
           <div className="form-group">
@@ -485,9 +491,9 @@ function Admin() {
               onBlur={() => handleBlur('price')}
               required
             />
-            {touched.price && errors.price && (
-              <p className="error-text">{errors.price}</p>
-            )}
+            <p className={`error-text ${shouldShowError('price') ? 'visible' : ''}`}>
+              {errors.price || 'Price must be greater than zero'}
+            </p>
           </div>
           
           <div className="form-group">
@@ -501,9 +507,9 @@ function Admin() {
               onBlur={() => handleBlur('era')}
               required
             />
-            {touched.era && errors.era && (
-              <p className="error-text">{errors.era}</p>
-            )}
+            <p className={`error-text ${shouldShowError('era') ? 'visible' : ''}`}>
+              {errors.era || 'Era must be at least 2 characters long'}
+            </p>
           </div>
           
           <div className="form-group">
@@ -516,12 +522,12 @@ function Admin() {
               onChange={handleNewToyChange}
               onBlur={() => handleBlur('imgLink')}
             />
-            {touched.imgLink && errors.imgLink && (
-              <p className="error-text">{errors.imgLink}</p>
-            )}
+            <p className={`error-text ${shouldShowError('imgLink') ? 'visible' : ''}`}>
+              {errors.imgLink || 'Image URL must start with http:// or https://'}
+            </p>
           </div>
           
-          {saveError && <p className="error-text">{saveError}</p>}
+          {saveError && <p className={`error-text visible`}>{saveError}</p>}
           
           <button 
             type="submit" 
@@ -555,7 +561,9 @@ function Admin() {
                   onBlur={() => handleBlur('name')}
                   placeholder="Name"
                 />
-                {touched.name && errors.name && <p className="error-text">{errors.name}</p>}
+                <p className={`error-text ${shouldShowError('name') ? 'visible' : ''}`}>
+                  {errors.name || 'Toy name must be at least 2 characters long'}
+                </p>
                 
                 <input
                   className="edit-input"
@@ -564,7 +572,9 @@ function Admin() {
                   onBlur={() => handleBlur('category')}
                   placeholder="Category"
                 />
-                {touched.category && errors.category && <p className="error-text">{errors.category}</p>}
+                <p className={`error-text ${shouldShowError('category') ? 'visible' : ''}`}>
+                  {errors.category || 'Category must be at least 2 characters long'}
+                </p>
                 
                 <input
                   className="edit-input"
@@ -573,7 +583,9 @@ function Admin() {
                   onBlur={() => handleBlur('era')}
                   placeholder="Era"
                 />
-                {touched.era && errors.era && <p className="error-text">{errors.era}</p>}
+                <p className={`error-text ${shouldShowError('era') ? 'visible' : ''}`}>
+                  {errors.era || 'Era must be at least 2 characters long'}
+                </p>
                 
                 <input
                   className="edit-input"
@@ -585,7 +597,9 @@ function Admin() {
                   onBlur={() => handleBlur('price')}
                   placeholder="Price (SEK)"
                 />
-                {touched.price && errors.price && <p className="error-text">{errors.price}</p>}
+                <p className={`error-text ${shouldShowError('price') ? 'visible' : ''}`}>
+                  {errors.price || 'Price must be greater than zero'}
+                </p>
                 
                 <input
                   className="edit-input"
@@ -594,7 +608,9 @@ function Admin() {
                   onBlur={() => handleBlur('imgLink')}
                   placeholder="Image URL"
                 />
-                {touched.imgLink && errors.imgLink && <p className="error-text">{errors.imgLink}</p>}
+                <p className={`error-text ${shouldShowError('imgLink') ? 'visible' : ''}`}>
+                  {errors.imgLink || 'Image URL must start with http:// or https://'}
+                </p>
                 
                 <textarea
                   className="edit-textarea"  
@@ -604,9 +620,11 @@ function Admin() {
                   onBlur={() => handleBlur('description')}
                   placeholder="Description"
                 />
-                {touched.description && errors.description && <p className="error-text">{errors.description}</p>}
+                <p className={`error-text ${shouldShowError('description') ? 'visible' : ''}`}>
+                  {errors.description || 'Description must be at least 2 characters long'}
+                </p>
                 
-                {saveError && <p className="error-text">{saveError}</p>}
+                {saveError && <p className="error-text visible">{saveError}</p>}
                 
                 <div className="edit-buttons">
                   <button 
