@@ -3,6 +3,7 @@ import './Header.css';
 import logo from "../../assets/logo.png"
 import shopping_cart from "../../assets/shopping_cart.png"
 import Padlock_close from "../../assets/Padlock_close.png"
+import CartCounter from '../cartcounter/CartCounter';
 
 const Header = () => {
 
@@ -25,6 +26,7 @@ const Header = () => {
                 <Link to="/cart" className={`nav-item cart }`}>
                     <div className="cart-icon">
                         <img src={shopping_cart} alt="Shopping Cart" />
+                        <CartCounter />
                         
                     </div>
                 </Link>
