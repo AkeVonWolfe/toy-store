@@ -1,7 +1,7 @@
 # Toy store
 
 Toy store is a Retro Toy  built with **React** and **Firestore** 
-It loads menu items from firestore and allows items to be added and remove from cart, aswell as the removal, edit and add  new items to the store visa the admin view.
+It loads menu items from firestore and allows items to be added and remove from cart, aswell as the removal, edit and add  new items to the store with the admin view.
 
 ##  Live Demo
 
